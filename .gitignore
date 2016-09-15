@@ -1,0 +1,8 @@
+## Mac OS ##
+**/*.DS_Store
+
+## npm ##
+npm-debug.log
+
+## build directory ##
+client/dist/*
