@@ -1,0 +1,516 @@
+/* CSS RESET */
+*{
+    box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.clearfix:after{
+    clear: both;
+    display: block;
+    content: ' ';
+    height: 0;
+}
+
+
+/*-------UNIVERSAL------------*/
+.button{
+    display: block;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 auto;
+    color: #9BC73C;
+    border: 1px solid #9BC73C;
+    font-weight: lighter;
+}
+
+.button:hover{
+    background-color: #9BC73C;
+    color: white;
+}
+
+
+/* ------- HEADER ---------*/
+header{
+    background-color: rgba(248, 248, 248, 0.95);
+    height: 75px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    z-index: 999;
+    box-shadow: 1px 1px 7px 1px #999;
+}
+
+header h1, header nav{
+    float: left;
+    width: 20%;
+}
+
+header nav{
+    width: 80%;
+}
+
+header h1{
+    padding: 15px;
+}
+
+header h1 img{
+    width: 50px;
+    height: auto;
+}
+
+header .wrapper{
+    width: 90%;
+    margin: 0 auto;
+}
+
+header nav ul{
+    float: right;
+    padding: 20px 0;
+}
+
+nav ul li{
+    float: left;
+    width: 150px;
+    text-align: center;
+}
+
+nav ul li a{
+    display: block;
+    padding: 10px;
+    text-transform: lowercase;
+}
+
+nav ul li a i{
+    padding-right: 5px;
+}
+
+header .button{
+    width: 120px;
+}
+
+
+
+/* ------------- DASHBOARD ----------*/
+main {
+    margin-top: 75px;
+    min-height: 700px;
+}
+
+.logoBg{
+    background-image: url('http://yadayadacreative.com/projects/logoLarge.png');
+    background-repeat: no-repeat;
+    background-position: center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.dashboardCols > div {
+    float: left;
+    width: 50%;
+    min-height: 200px;
+}
+
+.dashboardCols > div > div{
+    min-height: 200px;
+}
+
+.dashboardLeftCol ul{
+    padding: 30px;
+}
+
+.dashboardRightCol{
+    background: #f8f8f8;
+    padding: 30px;
+}
+
+.dashboardCols h3{
+    font-size: 32px;
+    text-align: center;
+    font-weight: lighter;
+    text-transform: uppercase;
+    background-color: #F26248;
+    color: white;
+    padding: 15px 30px;
+}
+
+.dashboardCols h3 > a {
+    float: left;
+    color: white;
+}
+
+.dashboardSummary{
+    background-color: #193441;
+    color: white;
+}
+
+.dashboardSummaryProf, .dashboardSummaryStats{
+    float: left;
+    min-height: 200px;
+}
+
+.dashboardSummaryProf{
+    width: 30%;
+    padding: 30px;
+}
+
+.dashboardSummaryProf h3{
+    font-size: 24px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.dashboardSummaryProf img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.dashboardSummaryStats{
+    width: 70%;
+}
+
+.dashboardSummaryStats > div{
+    float: left;
+    width: 32%;
+    text-align: center;
+    padding: 70px 30px;
+}
+
+.dashboardSummaryStats > div p{
+    font-size: 92px;
+    font-weight: lighter;
+    color: #9BC73C;
+}
+
+.dashboardSummaryStats > div h5{
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px 60px;
+    word-spacing: 3px;
+    line-height: 120%;
+    text-transform: uppercase
+}
+
+.dashboardLeftColItem, .dashboardRightColItem{
+    border-radius: 5px;
+    padding: 10px;
+    height: 75px;
+    margin: 5px 0 25px;
+    background-color: #f8f8f8;
+    box-shadow: 1px 1px 1px 1px #ccc;
+}
+
+.dashboardRightColItem, .studentDetails .dashboardLeftColItem {
+    background-color: #fff;
+}
+
+.dashboardLeftColItem:hover, .dashboardLeftColItem:hover h6{
+    background-color: #9BC73C;
+    color: white;
+}
+
+.dashboardLeftColItem > div, .dashboardRightColItem > div{
+    float: left;
+}
+
+.dashboardLeftColItem > div:first-of-type, .dashboardRightColItem > div:first-of-type{
+    width: 75%;
+}
+
+.dashboardLeftColItem > div:nth-of-type(2), .dashboardRightColItem > div:nth-of-type(2){
+    width: 15%;
+}
+
+.dashboardLeftColItem > div:last-of-type, .dashboardRightColItem > div:last-of-type{
+    width: 10%;
+    text-align: right;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+.dashboardLeftColItem h6, .dashboardRightColItem h6{
+    text-transform: uppercase;
+    color: #999;
+}
+
+.dashboardLeftColItem p, .dashboardRightColItem p{
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.studentDetails h1{
+    font-size: 32px;
+    text-align: center;
+    color: #9BC73C;
+    margin-bottom: 35px;
+}
+
+.studentDetails .dashboardLeftColItem{
+    line-height: 125%;
+}
+
+.studentDetails .dashboardLeftColItem:hover{
+    background-color: white;
+    color: #333;
+}
+
+/* -------- SIGN UP/SIGN IN --------------*/
+.authWrapper{
+    width: 350px;
+    margin: 50px auto;
+    background-color: rgba(248, 248, 248, 0.95);
+    padding: 30px;
+}
+
+.authWrapper input, .authWrapper button, .formWrapper form input, .formWrapper button{
+    display: block;
+    width: 90%;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.authWrapper input{
+    margin: 10px auto;
+    border: none;
+}
+
+.authWrapper button, .formWrapper button{
+    text-align: center;
+    text-transform: uppercase;
+    color: #9BC73C;
+    border: 1px solid #9BC73C;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.authWrapper button:hover, .formWrapper button:hover{
+    background-color: #9BC73C;
+    color: white;
+}
+
+.authWrapper p{
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.authWrapper p a{
+    text-decoration: underline;
+    color: #333;
+}
+
+
+/* ---------WELCOME-----------*/
+.intro, .team, .about{
+    min-height: 350px;
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 100px;
+}
+
+.about{
+    background-color: rgba(248, 248, 248, 0.95);
+}
+
+.about p{
+    font-size:  22px;
+    line-height: 150%;
+    padding: 0 100px;
+}
+
+.intro h1, .authWrapper h1{
+    font-size: 92px;
+    color: #F26248;
+    text-transform: uppercase;
+    font-family: 'Baloo Tamma', cursive;
+    text-align: center;
+}
+
+.intro h2{
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.team h3, .about h3{
+    font-size: 52px;
+    text-transform: uppercase;
+    color: #9BC73C;
+    margin-bottom: 60px;
+    font-weight: 700;
+}
+
+.team h5{
+    font-size: 20px;
+    margin: 10px 0 5px;
+    font-weight: 700;
+}
+
+.team h6{
+    font-weight: 500;
+}
+
+.team p{
+    font-weight: lighter;
+    margin: 15px 0;
+}
+
+.teamUl{
+    width: 80%;
+    margin: 35px auto;
+}
+
+.teamUl li{
+    float: left;
+    width: 25%;
+    padding: 20px;
+}
+
+.teamUl img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+
+
+
+/* -------- FORMS --------------*/
+.formWrapper{
+    background-color: rgba(255, 255, 255, 0.95);
+    min-height: 700px;
+    padding-top: 50px;
+}
+
+.formWrapper h3{
+    font-size: 52px;
+    text-align: center;
+    font-weight: normal;
+    color: #9BC73C;
+    text-transform: uppercase;
+}
+
+.formWrapper form{
+    width: 400px;
+    margin: 0 auto;
+}
+
+.formWrapper form input{
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+}
+
+.daysOfWeekCheckboxes{
+    width: 90%;
+    margin: 5px auto;
+}
+
+form .daysOfWeekCheckboxes input{
+    display: inline;
+    margin-left: 10px;
+    width: 20px;
+}
+
+form .daysOfWeekCheckboxes input:first-of-type{
+    margin-left: 0;
+}
+
+form label{
+    margin: 25px auto 0;
+    display: block;
+    width: 90%;
+    font-size: 20px;
+    color: #193441;
+}
+
+/* ------ MEDIA QUERY ------------- */
+@media screen and (max-width: 1080px) {
+    .dashboardSummaryStats > div h5 {
+        padding: 5px 10px;
+    }
+
+    .dashboardSummaryStats > div {
+        padding: 70px 5px;
+    }
+
+    .dashboardSummaryStats > div p {
+        font-size: 82px;
+    }
+
+    .dashboardSummaryStats > div h5 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    .dashboardSummaryProf, .dashboardSummaryStats {
+         float: none; 
+         width: 100%;
+    }
+    .dashboardSummaryStats > div {
+        float: none; 
+        width: 100%; 
+        padding: 30px 5px;
+    }
+
+    .dashboardSummaryProf {
+         width: 100%; 
+    }
+    .dashboardCols > div {
+        float: none;
+        width: 100%;
+    }
+}
