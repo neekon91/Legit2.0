@@ -1,13 +1,13 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 // Dashboard summary is the component above the two columns in the dashboard
 import React from 'react';
 
-const DashboardSummary = () => {
+const DashboardSummary = (props) => {
     return (
         <div className="clearfix dashboardSummary">
             <div className="dashboardSummaryProf">
                 <img src="http://yadayadacreative.com/projects/student.png" alt=""/>
-                <h3>John Doe</h3>
+                <h3>{props.first} {props.last}</h3>
                 <a className="button">Edit Student</a>
             </div>
             <div className="dashboardSummaryStats clearfix">
@@ -29,3 +29,4 @@ const DashboardSummary = () => {
 };
 
 export default DashboardSummary;
+
