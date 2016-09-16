@@ -1,5 +1,5 @@
 //Individual students
-//Had to cut back on functionality due to time - plan was to have the user be able to 
+//Had to cut back on functionality due to time - plan was to have the user be able to
 //click on a student and go to a dashboard with all that students information
 
 //React
@@ -20,10 +20,10 @@ class DashboardRightColItem extends React.Component {
         //redirect user to that particular students dashboard
         browserHistory.push('/student');
     }
-    
+
     render(){
         return (
-            <div className="dashboardRightColItem clearfix">
+            <div onClick = {this.getStudent.bind(this)} className="dashboardRightColItem clearfix">
                 <div>
                     <h6>Name</h6>
                     <p>{this.props.student.first} {this.props.student.last}</p>

@@ -8,7 +8,8 @@ class DashboardRightCol extends React.Component {
   render () {
     return (
       <div className='dashboardRightCol'>
-        <DashboardRightColDetail currentstudent={this.props} />
+      {console.log(this.props)}
+        <DashboardRightColDetail assignments={this.props} />
 
       </div>
     )

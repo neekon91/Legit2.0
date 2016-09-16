@@ -1,4 +1,4 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 //React
 import React, { Component, PropTypes, ContextTypes } from 'react';
 import { browserHistory } from 'react-router'
@@ -28,6 +28,8 @@ class Dashboard extends React.Component {
 
      componentDidMount() {
         let that = this;
+        // console.log(this)
+        // console.log(localStorage.getItem('studentId'))
         var id = localStorage.getItem('studentId');
         this.serverRequest = $.ajax({
             method: "GET",
