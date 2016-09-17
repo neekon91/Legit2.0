@@ -1,18 +1,18 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 // var session = require('express-session');
-var path = require('path');
-var Auth = require('./config/authentication.js');
-var passportService = require('./config/passport.js');
-var passport = require('passport');
+const path = require('path');
+const Auth = require('./config/authentication.js');
+const passportService = require('./config/passport.js');
+const passport = require('passport');
 
 
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/tcp');
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, "There's an error"));
 db.once('open', function callback(){console.log('successfully logged into mongo');  });
 

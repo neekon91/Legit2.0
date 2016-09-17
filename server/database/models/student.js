@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
-var SALT_WORK_FACTOR = 10;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt-nodejs');
+const SALT_WORK_FACTOR = 10;
 
 var student = new Schema({
   email: { type: String, required: true, index: { unique: true } },
@@ -36,7 +36,7 @@ student.methods.comparePassword = function(candidatePassword, cb) {
   });
 };
 
-var Student = mongoose.model('Student', student);
+const Student = mongoose.model('Student', student);
 module.exports = Student;
 
 // module.exports = mongoose.model('User', user);
