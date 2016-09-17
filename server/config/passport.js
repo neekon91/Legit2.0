@@ -1,22 +1,17 @@
-var passport = require('passport');
-var User = require('../database/models/user');
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
+const passport = require('passport');
+const User = require('../database/models/user');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 
-var LocalStrategy = require('passport-local');
-// Passport : is the User logged in or not?
-if (process.env.NODE_ENV !== 'production') {
-
-  // config.js is ignored by Git
-  var config = require('../../config.js');
-}
-// Passport JS - two middle strategies for Auth.
-// Create Local Strategy - finds a user with same email and compare password
+const LocalStrategy = require('passport-local');
 
 const localOptions = {usernameField: 'email'};
+
+
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
 
-  User.findOne({ where: {email: email} }).then(function(user) {
+  User.findOne({ email: email }).then( function(user) {
+    console.log("line 14 passport");
     if (!user) {
       done(null, false);
     }
@@ -32,7 +27,8 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 });
 
 
-var secret = process.env.secret || config.secret;
+// fix ME PLEASE
+var secret = "testtesttest";
 //setup Options for jwt strategy
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
@@ -42,7 +38,7 @@ const jwtOptions = {
 // create jwt strategy - in this strategy, we accept a token, and see if is it real or fake.
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if email in the payload exists in our database
-  User.findOne({ where: {email: payload.sub} }).then(function(user) {
+  User.findOne({ email: payload.sub }).then(function(user) {
     if (user) {
       done(null, user);
     } else {
