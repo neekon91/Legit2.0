@@ -1,15 +1,15 @@
 // note to team NPC must be spelt out here
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Promise = require("bluebird");
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Promise = require("bluebird");
 // var bcrypt = require('bcrypt');
 // var SALT_WORK_FACTOR = 10;
 
-var Assignment = require('./models/assignment.js');
-var Section = require('./models/section.js');
-var Student = require('./models/student.js');
-var User = require('./models/user.js');
+const Assignment = require('./models/assignment.js');
+const Section = require('./models/section.js');
+const Student = require('./models/student.js');
+const User = require('./models/user.js');
 
 var Student_O = new Schema({
   score: Number
