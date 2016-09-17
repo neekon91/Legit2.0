@@ -1,10 +1,11 @@
-var Sequelize = require('sequelize');
-var db = require('../database_config.js');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var Section = db.define('Section', {
-  name: Sequelize.STRING,
-  grade: Sequelize.INTEGER,
-  subject: Sequelize.STRING
+var section = new Schema({
+  name: String,
+  grade: Number,
+  subject: String
 });
 
+var Section = mongoose.model("Section", section);
 module.exports = Section;
