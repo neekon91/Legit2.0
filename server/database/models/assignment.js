@@ -9,15 +9,3 @@ var assignment = new Schema({
 var Assignment = mongoose.model("Assignment", assignment);
 
 module.exports = Assignment;
-
-
-
-// var Sequelize = require('sequelize');
-// var db = require('../database_config.js');
-//
-// var Assignment = db.define('Assignment', {
-//   name: Sequelize.STRING,
-//   maxScore: Sequelize.INTEGER
-// });
-//
-// module.exports = Assignment;
