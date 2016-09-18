@@ -29,4 +29,3 @@ const DashboardSummary = (props) => {
 };
 
 export default DashboardSummary;
-

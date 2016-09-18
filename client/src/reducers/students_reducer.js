@@ -31,6 +31,5 @@ export default function studentsReducer(state = {}, action) {
 
 
 // Uncomment the console logs to see when each of these are being hit
-// Should see first 'ADDSTUDENT_REQUEST' consoled, then as soon as the 
+// Should see first 'ADDSTUDENT_REQUEST' consoled, then as soon as the
 // api call succeeds, should see 'ADDSTUDENT_SUCCESS'
-

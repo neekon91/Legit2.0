@@ -22,7 +22,7 @@ class DashboardLeftColItem extends React.Component {
 
     render(){
         return (
-            <a onClick={this.getClass.bind(this, this.props.classDetails.id)}>
+            <a onClick={this.getClass.bind(this, this.props.classDetails._id)}>
                 <div className="dashboardLeftColItem clearfix">
                     <div>
                         <h6>Title</h6>

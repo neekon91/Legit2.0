@@ -15,7 +15,7 @@ import Welcome from './auth/welcome/welcome_component.jsx';
 import Forms from './forms/form_component.jsx';
 
 export default class App extends React.Component {
-    
+
     render(){
         return (
             <div>
@@ -23,7 +23,7 @@ export default class App extends React.Component {
             </div>
         );
     }
-    
+
 };
 
 // See not in routes.js to understand this.props.children

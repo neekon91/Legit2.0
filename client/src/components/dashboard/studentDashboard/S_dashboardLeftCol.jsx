@@ -1,4 +1,4 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 // Left column is going to hold the list of classes, students, or assignments
 import React from 'react';
 

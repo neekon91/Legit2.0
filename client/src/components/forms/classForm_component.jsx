@@ -59,27 +59,27 @@ class ClassForm extends React.Component {
                 <h3>Class</h3>
                 <form  onSubmit={this.onFormSubmit.bind(this)}>
                     <label htmlFor="">Class Name</label>
-                    <input 
-                        name="class" 
-                        type="text" 
+                    <input
+                        name="class"
+                        type="text"
                         placeholder="Class Name..."
                         value={this.state.name}
                         onChange={this.onNameChange.bind(this)}
                     />
 
                     <label htmlFor="grade">Grade</label>
-                    <input 
-                        name="grade" 
-                        type="text" 
+                    <input
+                        name="grade"
+                        type="text"
                         placeholder="0-12..."
                         value={this.state.grade}
                         onChange={this.onGradeChange.bind(this)}
                     />
 
                     <label htmlFor="subject">Subject</label>
-                    <input 
-                        name="subject" 
-                        type="text" 
+                    <input
+                        name="subject"
+                        type="text"
                         placeholder="Subject..."
                         value={this.state.subject}
                         onChange={this.onSubjectChange.bind(this)}
@@ -87,7 +87,7 @@ class ClassForm extends React.Component {
                     <button type="submit" >Save Class</button>
                 </form>
             </div>
-            
+
         );
     }
 };

@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
                 var minutes = seconds / 60;
                 var days = Math.ceil(minutes / 1440);
                 // update the state
-                that.setState({ 
+                that.setState({
                     classes: data.classes,
                     students: data.students,
                     first: data.details.first || 'Welcome!',
@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
     }
 
     componentWillUnmount () {
-        //kill all server requests if there are 
+        //kill all server requests if there are
         //any still going once component is being unmounted
         this.serverRequest.abort();
     }
@@ -78,10 +78,10 @@ class Dashboard extends React.Component {
                         <Header />
                         <main>
                             <div className="dashboardWrapper">
-                                <DashboardSummary 
-                                    first={this.state.first} 
+                                <DashboardSummary
+                                    first={this.state.first}
                                     last={this.state.last}
-                                    numberClasses={this.state.numberClasses} 
+                                    numberClasses={this.state.numberClasses}
                                     numberStudents={this.state.numberStudents}
                                     daysLeft={this.state.daysLeft}
                                 />
@@ -98,7 +98,7 @@ class Dashboard extends React.Component {
                             </div>
                         </main>
                     </div>
-                    
+
                 );
             }else{
                 return(
@@ -107,8 +107,8 @@ class Dashboard extends React.Component {
                     </div>
                 )
             }
-            
-        
+
+
     }
 };
 
