@@ -22,5 +22,3 @@ const DashboardRightCol = ({students}) => {
 };
 
 export default DashboardRightCol;
-
-

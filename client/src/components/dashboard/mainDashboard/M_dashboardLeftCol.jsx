@@ -12,7 +12,7 @@ const DashboardLeftCol = ({classes}) => {
                 <ul>
                     {classes.map((classDetails) =>
                         <DashboardLeftColItem
-                            key={classDetails.id}
+                            key={classDetails._id}
                             classDetails={classDetails}
                         />
                     )}

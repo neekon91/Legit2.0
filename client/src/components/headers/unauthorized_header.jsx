@@ -6,7 +6,7 @@ const UnauthHeader = () => {
     return (
         <header>
             <div className="wrapper clearfix">
-                <h1>    
+                <h1>
                     <a href="/welcome">
                         <img src="http://yadayadacreative.com/projects/legitLogo.png" alt=""/>
                     </a>
@@ -15,13 +15,13 @@ const UnauthHeader = () => {
                     <ul>
                         <li>
                             <a href="/welcome#about">
-                                <i className="fa fa-info" aria-hidden="true"></i> 
+                                <i className="fa fa-info" aria-hidden="true"></i>
                                 About
                             </a>
                         </li>
                         <li>
                             <a href="/welcome#team">
-                                <i className="fa fa-users" aria-hidden="true"></i> 
+                                <i className="fa fa-users" aria-hidden="true"></i>
                                 Team
                             </a>
                         </li>
@@ -38,7 +38,7 @@ const UnauthHeader = () => {
                     </ul>
                 </nav>
             </div>
-            
+
         </header>
     );
 };

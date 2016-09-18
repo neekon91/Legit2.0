@@ -9,7 +9,7 @@ import { browserHistory } from 'react-router'
 import * as types from '../constants/ActionTypes';
 
 /////////////// LOGIN ////////////////
-// Called before api request, info sent to reducers. 
+// Called before api request, info sent to reducers.
 // Reducer waiting for this action type is in reducers/auth_reducer.js
 function requestLogin(creds) {
   return {
@@ -65,7 +65,7 @@ export function loginUser(creds) {
 
 
 /////////////// SIGNUP ////////////////
-// Called before api request, info sent to reducers. 
+// Called before api request, info sent to reducers.
 // Reducer waiting for this action type is in reducers/auth_reducer.js
 function requestSignup(info) {
   return {
@@ -128,7 +128,7 @@ export function signupUser(info) {
 
 
 /////////////// LOGOUT ////////////////
-// Called before logout request, info sent to reducers. 
+// Called before logout request, info sent to reducers.
 // Reducer waiting for this action type is in reducers/auth_reducer.js
 function requestLogout() {
   return {
@@ -151,7 +151,7 @@ function receiveLogout() {
 export function logoutUser() {
   return dispatch => {
     dispatch(requestLogout())
-    // clear out local storage 
+    // clear out local storage
     localStorage.removeItem('token')
     localStorage.removeItem('userid')
     // redircet user to login

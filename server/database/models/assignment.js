@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const assignment = new Schema({
   name: String,
-  maxScore: Number
+  maxScore: Number,
+  sectionId: String
 });
 
 const Assignment = mongoose.model("Assignment", assignment);

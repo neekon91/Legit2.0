@@ -1,4 +1,4 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 // Will be the indivisual assignment, student, or assignment
 import React from 'react';
 

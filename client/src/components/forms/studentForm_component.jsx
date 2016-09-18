@@ -56,22 +56,22 @@ class StudentForm extends React.Component {
                 <h3>Student</h3>
                 <form  onSubmit={this.onFormSubmit.bind(this)}>
                     <label htmlFor="first">First Name</label>
-                    <input 
-                        name="first" 
-                        type="text" 
+                    <input
+                        name="first"
+                        type="text"
                         placeholder="First Name..."
                         value={this.state.first}
                         onChange={this.onFirstNameChange.bind(this)}
                     />
                     <label htmlFor="last">Last Name</label>
-                    <input 
-                        name="last" 
-                        type="text" 
+                    <input
+                        name="last"
+                        type="text"
                         placeholder="Last Name..."
                         value={this.state.last}
                         onChange={this.onLastNameChange.bind(this)}
                     />
-                    
+
                     <button>Save Student</button>
                 </form>
             </div>

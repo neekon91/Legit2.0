@@ -28,26 +28,26 @@ class Header extends React.Component {
                         <ul>
                             <li>
                                 <a href='/home'>
-                                    <i className="fa fa-tachometer" aria-hidden="true"></i> 
+                                    <i className="fa fa-tachometer" aria-hidden="true"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i className="fa fa-envelope" aria-hidden="true"></i> 
+                                    <i className="fa fa-envelope" aria-hidden="true"></i>
                                     Messages
                                 </a>
                             </li>
                             <li>
                                 <a onClick={this.props.logoutUser}>
-                                    <i className="fa fa-sign-out" aria-hidden="true"></i> 
+                                    <i className="fa fa-sign-out" aria-hidden="true"></i>
                                     Logout
                                 </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                
+
             </header>
         );
     }
