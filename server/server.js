@@ -6,7 +6,7 @@ const path = require('path');
 const Auth = require('./config/authentication.js');
 const passportService = require('./config/passport.js');
 const passport = require('passport');
-
+const Controller = require('./database/controller.js');
 
 
 const mongoose = require("mongoose");
@@ -27,7 +27,8 @@ var requireSignin = passport.authenticate('local', {session: false});
 app.post('/signin', requireSignin, Auth.signin);
 app.post('/signup', Auth.signup);
 
-
+app.get('/api/report/:model/:id', Controller.dashBoard);
+app.post('/api/add/:model', Controller.addClass);
 
 app.all('/*', function(req, res) {
   res.sendFile('index.html', {
