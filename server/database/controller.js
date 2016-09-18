@@ -258,12 +258,28 @@ module.exports = {
     });
   },
 
+  // const mongoose = require('mongoose');
+  // const Schema = mongoose.Schema;
+  //
+  // const roster = new Schema({
+  //   class_id: String,
+  //   student_id: String
+  // });
+
+  // var student = new Schema({
+  //   email: { type: String, required: true, index: { unique: true } },
+  //   password: { type: String, required: true },
+  //   first: String,
+  //   last: String
+  // });
+
+
 
 
   //Enroll Students
 
   enrollStudent: function(req, res){
-
+    console.log("NEW ROSTER STUDENT 1.0", newRosterStudent);
     // CREATE
     var newRosterStudent = new Roster({
       studentId: req.body.students,

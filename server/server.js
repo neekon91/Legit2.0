@@ -54,10 +54,6 @@ app.post('/api/enrol', Controller.enrollStudent);
 
 
 
-
-
-
-
 app.all('/*', function(req, res) {
   res.sendFile('index.html', {
     root: path.resolve(__dirname, '.././client')
