@@ -10,7 +10,7 @@ function tokenForUser(user) {
 }
 
 exports.signin = function (req, res, next) {
-  res.send({ token: tokenForUser(req.user) });
+  res.send({ token: tokenForUser(req.user), userid:req.user.id });
 }
 
 exports.signup = function (req, res, next) {

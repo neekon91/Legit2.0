@@ -5,8 +5,8 @@ const section = new Schema({
   name: String,
   grade: Number,
   subject: String,
-  teacher_id: Number,
-  student_id: Number
+  teacher_id: String,
+  student_id: String
 });
 
 const Section = mongoose.model("Section", section);

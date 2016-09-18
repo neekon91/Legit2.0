@@ -33,38 +33,74 @@ module.exports = {
   //   })
   //   res.sendStatus(201);
   // },
-
   dashBoard: function(req, res){
-    User.findOne({_id: req.params.id}).then(function(user){
-      resData.details = user;
 
-      Section.findAll({teacher_id: user.id}).then(function(classes){
-        resData.classes = classes;
-        // array of objects with class tables
-        var studentData = [];
-        var studArray = [];
-        classes.forEach(function(val){
-          // which way do you want us to present the data to you? in and object or array?
-          // studentObj[val.student_id] = [val.name, val.grade, val.Subject, val.teacher_id];
-          // studentObj[val.student_id] = {val.name:val.name, val.grade:val.grade, val.Subject:val.Subject, val.teacher_id:val.teacher_id};
-          studArray.push(val.student_id]);
-        })
+    var query = User.where({_id: req.params.id});
 
-        studArray.forEach(function(stud){
-          Student.findOne({_id: stud }).then(function(stu){
-            studentData.push(stu);
-          })
+    query.findOne(function(err, user){
 
-        })
+     resData.details = user;
+     var query2 = Section.where({teacher_id: user.id});
 
-        resData.students = studentData;
-      })
-      console.log(resData.classes);
-      console.log(resData.students);
-      res.json(resData);
+     query2.find(function(err, classes){
+       resData.classes = classes;
+       // array of objects with class tables
+       var studentData = [];
+       var studArray = [];
+       classes.forEach(function(val){
+         // which way do you want us to present the data to you? in and object or array?
+         // studentObj[val.student_id] = [val.name, val.grade, val.Subject, val.teacher_id];
+         // studentObj[val.student_id] = {val.name:val.name, val.grade:val.grade, val.Subject:val.Subject, val.teacher_id:val.teacher_id};
+         studArray.push(val.student_id);
+       })
+
+       studArray.forEach(function(stud){
+         var query3 = Student.where({_id: stud });
+         query3.find(function(stu){
+           studentData.push(stu);
+         })
+
+       })
+
+       resData.students = studentData;
+     })
+     console.log(resData.classes);
+     console.log(resData.students);
+     res.json(resData);
 
     })
   },
+  // dashBoard: function(req, res){
+  //   User.findOne({_id: req.params.id}).then(function(user){
+  //     resData.details = user;
+  //
+  //     Section.findAll({teacher_id: user.id}).then(function(classes){
+  //       resData.classes = classes;
+  //       // array of objects with class tables
+  //       var studentData = [];
+  //       var studArray = [];
+  //       classes.forEach(function(val){
+  //         // which way do you want us to present the data to you? in and object or array?
+  //         // studentObj[val.student_id] = [val.name, val.grade, val.Subject, val.teacher_id];
+  //         // studentObj[val.student_id] = {val.name:val.name, val.grade:val.grade, val.Subject:val.Subject, val.teacher_id:val.teacher_id};
+  //         studArray.push(val.student_id);
+  //       })
+  //
+  //       studArray.forEach(function(stud){
+  //         Student.findOne({_id: stud }).then(function(stu){
+  //           studentData.push(stu);
+  //         })
+  //
+  //       })
+  //
+  //       resData.students = studentData;
+  //     })
+  //     console.log(resData.classes);
+  //     console.log(resData.students);
+  //     res.json(resData);
+  //
+  //   })
+  // },
   addClass: function(req, res){
     var newSection = new Section({
       name: req.body.name,
