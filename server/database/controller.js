@@ -1,30 +1,21 @@
 // note to team NPC must be spelt out here
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Promise = require("bluebird");
 // var bcrypt = require('bcrypt');
 // var SALT_WORK_FACTOR = 10;
-
 const Assignment = require('./models/assignment.js');
 const Section = require('./models/section.js');
 const Student = require('./models/student.js');
 const User = require('./models/user.js');
 const Roster = require('./models/roster.js');
-
-
 var Student_O = new Schema({
   score: Number
 });
-
 var Student_Outcomes = mongoose.model("Student_Outcomes", Student_O);
-
 var resData = {};
-
 module.exports = {
-
   //Main Dashboard
-
   mainDashboard: function(req, res){
 
     var getUser = User.where({_id: req.params.id});
@@ -37,11 +28,9 @@ module.exports = {
         // array of objects with class tables
         var studentData = [];
         var studArray = [];
-
         classes.forEach(function(val){
           studArray.push(val.student_id);
         });
-
         studArray.forEach(function(stud){
          var getStudents = Student.where({_id: stud });
 
@@ -49,54 +38,36 @@ module.exports = {
             studentData.push(stu);
           })
         });
-
         resData.students = studentData;
       })
       console.log(resData.classes);
       console.log(resData.students);
       res.json(resData);
-
     })
   },
-
-
   //classDashboard
-
     classDashboard: function(req, res){
     var getSection = Section.where({_id: req.params.id});
-
       getSection.findOne(function(err, section){
         resData.details = section;
-
     var getAssignments = Assignment.where({sectionId: mongoose.Types.ObjectId(section._id)})
       getAssignments.find(function(err, assignments){
-
         resData.assignments = assignments;
       });
-
     var getRoster = Roster.where({class_id: section._id})
         resData.students = [];
-          getRoster.find(function(err, data){
-         console.log("ROSTERROSTERROSTER", data);
+        getRoster.find(function(err, data){
             data.forEach(function(roster){
-             console.log("ROSTER222222222", roster);
               var currStudent = Student.where({_id: roster.student_id});
-                currStudent.find(function(err,data){
-                resData.students.push(data);
-              });
-            });
-
-        });
-
-      res.json(resData);
-
+                currStudent.find(function(err,studData){
+                  resData.students.push(studData);
+                })
+            })
+        })
     })
+      res.json(resData);
   },
-
-
-
   //studentDashboard
-
     studentDashboard: function(req, res){
 
     var getStudent = Student.where({_id: req.params.id});
@@ -117,20 +88,15 @@ module.exports = {
           getStudents.find(function(stu){
             studentData.push(stu);
           })
-
         })
-
         resData.students = studentData;
       })
       console.log(resData.classes);
       console.log(resData.students);
       res.json(resData);
-
     })
   },
-
   //outcomeInfo
-
     outcomeInfo: function(req, res){
 
     var getUser = User.where({_id: req.params.id});
@@ -151,23 +117,17 @@ module.exports = {
           getStudents.find(function(stu){
             studentData.push(stu);
           })
-
         })
-
         resData.students = studentData;
       })
       console.log(resData.classes);
       console.log(resData.students);
       res.json(resData);
-
     })
   },
 
-
 //getMessages
-
 //outcomeInfo
-
     getMessages: function(req, res){
 
     var getUser = User.where({_id: req.params.id});
@@ -188,18 +148,14 @@ module.exports = {
           getStudents.find(function(stu){
             studentData.push(stu);
           })
-
         })
-
         resData.students = studentData;
       })
       console.log(resData.classes);
       console.log(resData.students);
       res.json(resData);
-
     })
   },
-
 
 
   //Class Additions
@@ -216,13 +172,10 @@ module.exports = {
       if (err) {
         return console.log(err);
       }
-
       res.json(newSection);
     });
   },
-
 //Assignment Additions
-
   addAssignment: function(req, res){
     var newAssignment = new Section({
       name: req.body.name,
@@ -236,11 +189,7 @@ module.exports = {
       res.json(newAssignment);
     });
   },
-
-
-
 //Students Additions
-
   addStudent: function(req, res){
     var newStudent = new Student({
       first: req.body.first,
@@ -253,39 +202,26 @@ module.exports = {
       if (err) {
         return console.log(err);
       }
-
       res.json(newStudent);
     });
   },
-
-
-
   //Enroll Students
-
   enrollStudent: function(req, res){
-
+    console.log("REQUESTBODYFORENROLL", req.body);
     // CREATE
     var newRosterStudent = new Roster({
-      studentId: req.body.students,
-      classId: req.body.classes
+      student_id: req.body.students,
+      class_id: req.body.classes
     })
    console.log("NEW ROSTER STUDENT", newRosterStudent);
     newRosterStudent.save(function (err) {
       if (err) {
         return console.log(err);
       }
-
       res.json(newRosterStudent);
     });
   }
-
-
-
-
-
-
 };
-
 // Schema
 // const section = new Schema({
 //   name: String,
