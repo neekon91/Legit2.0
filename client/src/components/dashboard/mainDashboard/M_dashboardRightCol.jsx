@@ -12,7 +12,7 @@ const DashboardRightCol = ({students}) => {
             <ul>
                 {students.map((student) =>
                     <DashboardRightColItem
-                        key={student.id}
+                        key={student._id}
                         student={student}
                     />
                 )}

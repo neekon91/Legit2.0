@@ -5,7 +5,6 @@ const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../database/models/user.js');
 const config = require('../../config.js');
-
 const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, function (email, password, done) {
 
@@ -32,18 +31,12 @@ const localLogin = new LocalStrategy(localOptions, function (email, password, do
   });
 });
 
-
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: config.secret
 };
 
-
 const jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
-
-
-
-
 
   User.findById(payload.sub, function (err, user) {
     if (err) {
@@ -58,7 +51,6 @@ const jwtLogin = new JwtStrategy(jwtOptions, function (payload, done) {
     }
   });
 });
-
 
 passport.use(jwtLogin);
 passport.use(localLogin);

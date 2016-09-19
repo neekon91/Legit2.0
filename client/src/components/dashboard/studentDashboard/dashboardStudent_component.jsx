@@ -53,7 +53,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
-
+        console.log("STATEEEEE", this.state);
                 return (
                     <div>
                         <Header />
@@ -81,7 +81,6 @@ class Dashboard extends React.Component {
 
 
 function mapStateToProps(state) {
-    // console.log("STATE", state);
     return {
         isAuthenticated: state.auth.isAuthenticated,
         token: state.auth.token

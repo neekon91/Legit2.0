@@ -15,11 +15,14 @@ class StudentForm extends React.Component {
         //Passing through classId when calling addStudent so that
         //student can be associated to that class right after it is created
         let classId = localStorage.getItem('classId')
+        let userid = localStorage.getItem('userid')
 
         this.state = {
             first: '',
             last: '',
-            classId: classId
+            classId: classId,
+            userId: userid
+
         };
     }
 

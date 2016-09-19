@@ -27,19 +27,19 @@ var requireSignin = passport.authenticate('local', {session: false});
 app.post('/signin', requireSignin, Auth.signin);
 app.post('/signup', Auth.signup);
 
-
+ 
 //GET CONTENT FROM DATABASE
 
-app.get('/api/report/users/:id', Controller.mainDashboard);
-app.get('/api/report/classes/:id', Controller.classDashboard);
+app.get('/api/report/users/:id', Controller.mainDashboard); //WORKS
+app.get('/api/report/classes/:id', Controller.classDashboard); //WORKS
 app.get('/api/report/students/:id', Controller.studentDashboard);
 
-app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo);
+// app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo);
 
 //Get Messages for Students and Teachers
 
-app.get('/api/messages/teacher/:UserId/', Controller.getMessages)
-app.get('/api/messages/student/:StudentId/', Controller.getMessages)
+// app.get('/api/messages/teacher/:UserId/', Controller.getMessages)
+// app.get('/api/messages/student/:StudentId/', Controller.getMessages)
 
 
 //ADD CONTENT TO DATABASE
@@ -50,7 +50,7 @@ app.post('/api/add/assignments', Controller.addAssignment);
 
 app.post('/api/add/students', Controller.addStudent);
 
-app.post('/api/enrol', Controller.enrollStudent);
+app.put('/api/enrol', Controller.enrollStudent);
 
 
 
