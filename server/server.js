@@ -27,7 +27,7 @@ var requireSignin = passport.authenticate('local', {session: false});
 app.post('/signin', requireSignin, Auth.signin);
 app.post('/signup', Auth.signup);
 
-
+ 
 //GET CONTENT FROM DATABASE
 
 app.get('/api/report/users/:id', Controller.mainDashboard); //WORKS
