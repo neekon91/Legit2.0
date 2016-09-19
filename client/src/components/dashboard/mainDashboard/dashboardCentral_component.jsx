@@ -42,6 +42,34 @@ class Dashboard extends React.Component {
             contentType: 'application/json',
             data: {},
             success: function(data){
+                console.log('here', data)
+                if(!data.students) {this.serverRequest = $.ajax({
+            method: "GET",
+            url: `/api/report/users/${id}`,
+            contentType: 'application/json',
+            data: {},
+            success: function(data){
+
+                // Calculate number of calendar days left
+                var start = new Date();
+                var end = new Date(data.details.schoolEndDate);
+                var difference = end.getTime() - start.getTime();
+                var milliseconds = new Date(difference)
+                var seconds = milliseconds / 1000;
+                var minutes = seconds / 60;
+                var days = Math.ceil(minutes / 1440);
+                // update the state
+                that.setState({
+                    classes: data.classes,
+                    students: data.students,
+                    first: data.details.first || 'Welcome!',
+                    last: data.details.last,
+                    numberClasses: data.classes.length,
+                    numberStudents: data.students.length,
+                    daysLeft: `${days}`
+                })
+            }
+        })}
                 // Calculate number of calendar days left
                 var start = new Date();
                 var end = new Date(data.details.schoolEndDate);

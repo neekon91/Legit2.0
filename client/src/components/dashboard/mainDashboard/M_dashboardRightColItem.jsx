@@ -22,8 +22,9 @@ class DashboardRightColItem extends React.Component {
     }
 
     render(){
+        console.log('student', this.props)
         return (
-            <div onClick = {this.getStudent.bind(this)} className="dashboardRightColItem clearfix">
+            <div onClick = {this.getStudent.bind(this, this.props.student._id)} className="dashboardRightColItem clearfix">
                 <div>
                     <h6>Name</h6>
                     <p>{this.props.student.first} {this.props.student.last}</p>

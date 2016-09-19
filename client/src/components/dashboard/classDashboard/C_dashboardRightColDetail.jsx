@@ -1,12 +1,16 @@
 // This component renders the summary info of whatever class was clicked on from the left column
-import React from 'react'
+import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 // const Modal = require('react-modal');
-class DashboardRightColDetail extends React.Component {
+class DashboardRightColDetail extends Component {
   constructor (props) {
     super(props)
   }
 
-
+  getAssignment(id) {
+    localStorage.setItem('assignmentId', id);
+    browserHistory.push('/assignment');
+  }
 
   renderDetails (props) {
   // if student has been select render assignment and scores on right hand side.
@@ -14,7 +18,8 @@ class DashboardRightColDetail extends React.Component {
       return (
         <div className='studentDetails'>
              {this.props.assignments.data.assignments.map((assignment) => {
-              return <h1 key={assignment._id}>{assignment.name}</h1>
+              return <h1 key={assignment._id} onClick={this.getAssignment.bind(this, assignment._id)}>{assignment.name}</h1>
+
              })}
         </div>
    ) } }
@@ -29,6 +34,7 @@ class DashboardRightColDetail extends React.Component {
 };
 
 export default DashboardRightColDetail
+
 
 
 

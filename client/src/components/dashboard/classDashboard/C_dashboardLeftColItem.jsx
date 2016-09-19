@@ -20,7 +20,7 @@ class DashboardLeftColItem extends React.Component {
       <div className='dashboardLeftColItem clearfix' onClick={this.getStudent.bind(this, this.props.data._id)}>
         <div>
           <h6>Name</h6>
-          <p> {this.props.data.first} + {this.props.data.last}</p>
+          <p> {this.props.data.first} {this.props.data.last}</p>
         </div>
         <div>
           <i className='fa fa-angle-right fa-2x' aria-hidden='true' />
