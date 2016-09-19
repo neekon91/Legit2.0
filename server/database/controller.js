@@ -176,43 +176,30 @@ module.exports = {
 //getMessages
 
 
-    getMessages: function(req, res){ //NEED TO WORK ON THIS
+  getMessages: function(req, res){ //NEED TO WORK ON THIS
 
-   if(req.params.UserId){
-     var getMessage = Message.where({_id: req.params.id});
-   }
-    var getMessage = Message.where({_id: req.params.id});
-      getUser.findOne(function(err, user){
-      resData.details = user;
-      var getSection = Section.where({teacher_id: user.id});
-      getSection.find(function(err, classes){
-        resData.classes = classes;
-        // array of objects with class tables
-        var studentData = [];
-        var studArray = [];
-        classes.forEach(function(val){
-          studArray.push(val.student_id);
-        })
-        studArray.forEach(function(stud){
-         var getStudents = Student.where({_id: stud });
 
-          getStudents.find(function(stu){
-            studentData.push(stu);
-          })
+    var receive = Message.where({receive_id: req.params.id});
 
-        })
+    var sent = Message.where({sent_id: req.params.id});
 
-        resData.students = studentData;
+      receive.find(function(err, user){
+        resData.receivers = user.message;
+
       })
-      console.log(resData.classes);
-      console.log(resData.students);
+      sent.find(function(err, user){
+        resData.senders = user.message;
+
+      })
       res.json(resData);
       resData = {};
-
-
-    })
   },
-
+  // const message = new Schema({
+  //   receive_id: String, //sender
+  //   sent_id: String, //gets it
+  //   message: String,
+  //   date: {type: Date, default: Date.now}
+  // });
 
 
   //Class Additions
@@ -278,8 +265,8 @@ module.exports = {
 
   addMessage: function(req, res){
     var newMessage = new Message({
-      teacher_id: req.body.teacher,
-      student_id: req.body.student,
+      receive_id: req.body.receiver,
+      sent_id: req.body.sender,
       message: req.body.message,
     })
     console.log("NEW MESSAGE", newMessage);
