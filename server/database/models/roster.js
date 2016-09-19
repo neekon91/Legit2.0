@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const roster = new Schema({
   class_id: String,
+  teacher_id: String,
   student_id: String
 });
 
