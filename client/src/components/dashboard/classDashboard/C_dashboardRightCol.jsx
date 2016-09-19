@@ -6,10 +6,10 @@ class DashboardRightCol extends React.Component {
     super(props)
   }
   render () {
+    console.log('here now', this.props)
     return (
       <div className='dashboardRightCol'>
         <DashboardRightColDetail assignments={this.props} />
-
       </div>
     )
   }
