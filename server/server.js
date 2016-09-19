@@ -38,8 +38,7 @@ app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo); //Need to
 
 //Get Messages for Students and Teachers
 
-app.get('/api/messages/teacher/:UserId/', Controller.getMessages) //Need to work on this
-app.get('/api/messages/student/:StudentId/', Controller.getMessages) //Need to work on this
+app.get('/api/messages/:id/', Controller.getMessages) //Work me
 
 
 //ADD CONTENT TO DATABASE
