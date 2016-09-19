@@ -14,7 +14,7 @@ class DashboardRightColDetail extends React.Component {
       return (
         <div className='studentDetails'>
              {this.props.assignments.data.assignments.map((assignment) => {
-              return <h1 key={assignment.id}>{assignment.name}</h1>
+              return <h1 key={assignment._id}>{assignment.name}</h1>
              })}
         </div>
    ) } }

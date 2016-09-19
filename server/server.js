@@ -27,34 +27,67 @@ var requireSignin = passport.authenticate('local', {session: false});
 app.post('/signin', requireSignin, Auth.signin);
 app.post('/signup', Auth.signup);
 
- 
+
 //GET CONTENT FROM DATABASE
 
 app.get('/api/report/users/:id', Controller.mainDashboard); //WORKS
 app.get('/api/report/classes/:id', Controller.classDashboard); //WORKS
-app.get('/api/report/students/:id', Controller.studentDashboard);
+app.get('/api/report/students/:id', Controller.studentDashboard); //Works
 
-// app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo);
+app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo); //Need to work on this
 
 //Get Messages for Students and Teachers
 
-// app.get('/api/messages/teacher/:UserId/', Controller.getMessages)
-// app.get('/api/messages/student/:StudentId/', Controller.getMessages)
+app.get('/api/messages/teacher/:UserId/', Controller.getMessages) //Need to work on this
+app.get('/api/messages/student/:StudentId/', Controller.getMessages) //Need to work on this
 
 
 //ADD CONTENT TO DATABASE
 
-app.post('/api/add/classes', Controller.addClass);
+app.post('/api/add/classes', Controller.addClass); //Works
 
-app.post('/api/add/assignments', Controller.addAssignment);
+app.post('/api/add/assignments', Controller.addAssignment); //Works
 
-app.post('/api/add/students', Controller.addStudent);
+app.post('/api/add/students', Controller.addStudent); //Works
 
-app.put('/api/enrol', Controller.enrollStudent);
+app.post('/api/add/message/', Controller.addMessage); //Should work??
+
+app.put('/api/enrol', Controller.enrollStudent); //Works
 
 
 
+// ========
+// image upload
 
+const multiparty = require('multiparty');
+const fs = require('fs');
+
+function saveImage(req, res) {
+  const form = new multiparty.Form();
+
+  form.parse(req, (err, fields, files) => {
+
+    // var {path: tempPath, originalFilename} = files.imageFile[0];
+    var copyToPath = "./images/" + files.imageFile[0];
+
+    fs.readFile(files.imageFile[0], (err, data) => {
+      // make copy of image to new location
+      fs.writeFile(newPath, data, (err) => {
+        // delete temp image
+        fs.unlink(tmpPath, () => {
+          res.send("File uploaded to: " + newPath);
+        });
+      });
+    });
+  })
+}
+
+app.post('/upload', saveImage);
+
+app.use('/images',express.static(__dirname + '/images'));
+
+//  upload end
+// ========
 
 
 
