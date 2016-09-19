@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 //Action
-import { signupUser } from '../../../actions/index.js';
+import { signupUser, uploadImage } from '../../../actions/index.js';
+
 
 class SignUpForm extends React.Component {
     constructor(props) {
@@ -20,10 +21,21 @@ class SignUpForm extends React.Component {
             first: '',
             last: '',
             schoolStart: '',
-            schoolEnd: ''
+            schoolEnd: '',
+            file: '',
+            imagePreviewUrl: ''
         };
+        this._handleImageChange = this._handleImageChange.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
-
+    _handleSubmit(event) {
+        event.preventDefault();
+        this.props.uploadImage(this.state.file, function(url){
+            this.setState({
+                file: url
+            })
+        });
+    }
     onFirstNameChange(event){
         //As user types in first name input, update the state
         //Once state updates the input value is updated to match the state
@@ -74,7 +86,29 @@ class SignUpForm extends React.Component {
         })
     }
 
+    _handleImageChange(event) {
+        event.preventDefault();
+
+        let reader = new FileReader();
+        let file = event.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result
+            });
+        }
+
+        reader.readAsDataURL(file)
+    }
+
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+            $imagePreview = (<img src={imagePreviewUrl} />);
+        }
+
         return (
             <form onSubmit={this.onFormSubmit.bind(this)}>
                 <label >First Name</label>
@@ -119,6 +153,13 @@ class SignUpForm extends React.Component {
                     value={this.state.password}
                     onChange={this.onPasswordChange.bind(this)}
                 />
+                <input
+                  type="file" onChange={this._handleImageChange}
+                />
+                <button type="submit" onClick={this._handleSubmit}>Upload Image</button>
+                <div>
+                  {$imagePreview}
+                </div>
                 <button type="submit">
                     Sign Up
                 </button>
@@ -130,7 +171,7 @@ class SignUpForm extends React.Component {
 
 //Gives us access to our action, signupUser, as this.props.signupUser within container
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ signupUser }, dispatch);
+    return bindActionCreators({ signupUser, uploadImage }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SignUpForm);

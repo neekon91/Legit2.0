@@ -1,4 +1,4 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 // Dashboard summary is the component above the two columns in the dashboard
 import React from 'react';
 

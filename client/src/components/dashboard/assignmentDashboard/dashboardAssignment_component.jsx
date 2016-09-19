@@ -1,4 +1,4 @@
-//Did not get to linking up this dashboard 
+//Did not get to linking up this dashboard
 
 //React
 import React from 'react';
@@ -24,7 +24,7 @@ const DashboardAssignment = () => {
                 </div>
             </main>
         </div>
-        
+
     );
 };
 
