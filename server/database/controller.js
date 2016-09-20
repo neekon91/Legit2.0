@@ -1,9 +1,11 @@
-// note to team NPC must be spelt out her
+// note to team NPC must be spelt out here
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Promise = require("bluebird");
 // var bcrypt = require('bcrypt');
 // var SALT_WORK_FACTOR = 10;
+
 const Assignment = require('./models/assignment.js');
 const Section = require('./models/section.js');
 const Student = require('./models/student.js');
@@ -11,30 +13,38 @@ const User = require('./models/user.js');
 const Roster = require('./models/roster.js');
 const Message = require('./models/message.js');
 const Outcome = require('./models/outcome.js');
+
+
 var Student_O = new Schema({
   score: Number
 });
-var Student_Outcomes = mongoose.model("Student_Outcomes", Student_O);
-var resData = {};
-module.exports = {
-//*****************MAIN DASHBOARD*******************************//
-  mainDashboard: function(req, res){
 
+var Student_Outcomes = mongoose.model("Student_Outcomes", Student_O);
+
+var resData = {};
+
+module.exports = {
+
+//*****************MAIN DASHBOARD*******************************//
+
+  mainDashboard: function(req, res){
 //Get teacher details
+
     var getUser = User.where({_id: req.params.id});
 
       getUser.findOne(function(err, user){
-
       resData.details = user;
 
   //Get teacher's classes
       var getSection = Section.where({teacher_id: user.id});
+
       getSection.find(function(err, classes){
         resData.classes = classes;
       });
-      var getStudents = Roster.where({teacher_id: req.params.id});
 
+      var getStudents = Roster.where({teacher_id: req.params.id});
 //Get array of all teacher's students
+
      resData.students = [];
       getStudents.find(function(err,data){
         data.forEach(function(roster){
@@ -45,22 +55,27 @@ module.exports = {
         });
       });
     });
-
     res.json(resData);
     resData = {};
-  },
-  //********************CLASS DASHBOARD****************************//
-    classDashboard: function(req, res){
 
+  },
+
+
+  //********************CLASS DASHBOARD****************************//
+
+    classDashboard: function(req, res){
   //Get all section information
     var getSection = Section.where({_id: req.params.id});
       getSection.findOne(function(err, section){
         resData.details = section;
+
   //Get all assignments information
+
     var getAssignments = Assignment.where({sectionId: section._id})
       getAssignments.find(function(err, assignments){
         resData.assignments = assignments;
       });
+
 //Get all students information
     var getRoster = Roster.where({class_id: section._id})
         resData.students = [];
@@ -72,27 +87,22 @@ module.exports = {
                 });
             });
         });
+
 //End Get all students
+
     })
-    res.json(resData);
-    resData = {};
-  },
-  //************************
-  assignmentDashboard: function(req, res){
-  //Get all assignments information
-    var getAssignments = Assignment.where({sectionId: req.params.id})
-      getAssignments.find(function(err, assignments){
-        resData.details = assignments;
-      });
 
-//End Get all students
     res.json(resData);
     resData = {};
+
   },
+
+
   //********************STUDENT DASHBOARD****************************//
-    studentDashboard: function(req, res){
 
+    studentDashboard: function(req, res){
     var getStudent = Student.where({_id: req.params.id});
+
     //Get all student details
       getStudent.findOne(function(err, student){
         console.log("GET ALL STUDENT IS CALLED ", student);
@@ -114,13 +124,13 @@ module.exports = {
             });
         });
     });
-      console.log("FINAL RESULT RESULT DATA", resData);
       res.json(resData);
       resData = {};
   },
-  //outcomeInfo
-  outcomeInfo: function(req, res){ //NEED TO WORK ON THIS
 
+  //outcomeInfo
+
+  outcomeInfo: function(req, res){ //NEED TO WORK ON THIS
     var getUser = User.where({_id: req.params.id});
       getUser.findOne(function(err, user){
       resData.details = user;
@@ -135,53 +145,51 @@ module.exports = {
         })
         studArray.forEach(function(stud){
          var getStudents = Student.where({_id: stud });
-
           getStudents.find(function(stu){
             studentData.push(stu);
           })
+
         })
+
         resData.students = studentData;
       })
       console.log(resData.classes);
       console.log(resData.students);
       res.json(resData);
       resData = {};
+
+
     })
   },
 
 //getMessages
-    getMessages: function(req, res){ //NEED TO WORK ON THIS
 
-   if(req.params.UserId){
-     var getMessage = Message.where({_id: req.params.id});
-   }
-    var getMessage = Message.where({_id: req.params.id});
-      getUser.findOne(function(err, user){
-      resData.details = user;
-      var getSection = Section.where({teacher_id: user.id});
-      getSection.find(function(err, classes){
-        resData.classes = classes;
-        // array of objects with class tables
-        var studentData = [];
-        var studArray = [];
-        classes.forEach(function(val){
-          studArray.push(val.student_id);
-        })
-        studArray.forEach(function(stud){
-         var getStudents = Student.where({_id: stud });
 
-          getStudents.find(function(stu){
-            studentData.push(stu);
-          })
-        })
-        resData.students = studentData;
+  getMessages: function(req, res){ //NEED TO WORK ON THIS
+
+    console.log("I'M CALLED IN GET MESSAGES", req.params);
+    var receive = Message.where({receive_id: req.params.id});
+
+    var sent = Message.where({sent_id: req.params.id});
+
+      receive.find(function(err, user){
+        resData.receivers = user.message;
+
       })
-      console.log(resData.classes);
-      console.log(resData.students);
+      sent.find(function(err, user){
+        resData.senders = user.message;
+
+      })
+      console.log("RESDATARESDATARESDATA", resData);
       res.json(resData);
       resData = {};
-    })
   },
+  // const message = new Schema({
+  //   receive_id: String, //sender
+  //   sent_id: String, //gets it
+  //   message: String,
+  //   date: {type: Date, default: Date.now}
+  // });
 
 
   //Class Additions
@@ -198,10 +206,13 @@ module.exports = {
       if (err) {
         return console.log(err);
       }
+
       res.json(newSection);
     });
   },
+
 //Assignment Additions
+
   addAssignment: function(req, res){
     var newAssignment = new Assignment({
       name: req.body.name,
@@ -215,7 +226,9 @@ module.exports = {
       res.json(newAssignment);
     });
   },
+
 //Students Additions
+
   addStudent: function(req, res){
     var newStudent = new Student({
       first: req.body.first,
@@ -231,11 +244,16 @@ module.exports = {
       res.json(newStudent);
     });
   },
+
+
+
+
 //Message Additions
+
   addMessage: function(req, res){
     var newMessage = new Message({
-      teacher_id: req.body.teacher,
-      student_id: req.body.student,
+      receive_id: req.body.receiver,
+      sent_id: req.body.sender,
       message: req.body.message,
     })
     console.log("NEW MESSAGE", newMessage);
@@ -243,10 +261,14 @@ module.exports = {
       if (err) {
         return console.log(err);
       }
+
       res.json(newMessage);
     });
   },
+
+
  //Enroll Students
+
   enrollStudent: function(req, res){
     console.log("REQUESTBODYFORENROLL", req.body);
     // CREATE
@@ -260,10 +282,8 @@ module.exports = {
       if (err) {
         return console.log(err);
       }
+
       res.json(newRosterStudent);
     });
   }
 };
-
-
-

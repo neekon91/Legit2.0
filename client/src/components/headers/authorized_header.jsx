@@ -33,7 +33,7 @@ class Header extends React.Component {
                                 </a>
                             </li>
                             <li>
-                                <a>
+                                <a href='/message'>
                                     <i className="fa fa-envelope" aria-hidden="true"></i>
                                     Messages
                                 </a>
