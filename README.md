@@ -1,4 +1,10 @@
-## Legit 2.0
+# Legit 2.0
+> A web application for Teachers to keep records of their students
+
+## Team 
+  - __Product Owner__: Harris Lee
+  - __Scrum Master__: Neekon Etemad
+  - __Development Team Members__: Michael Olorunnisola, Daniel Wirz, Kent Moreland 
 
 
 [![Stories in Ready](https://badge.waffle.io/HR18-Legit/hrr18-legit.png?label=ready&title=Ready)](https://waffle.io/HR18-Legit/hrr18-legit)
