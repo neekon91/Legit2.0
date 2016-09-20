@@ -1,5 +1,4 @@
-});
-// note to team NPC must be spelt out here
+// note to team NPC must be spelt out her
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Promise = require("bluebird");
