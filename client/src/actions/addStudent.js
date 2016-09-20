@@ -47,7 +47,6 @@ export function addStudent(studentInfo) {
             // call addedStudent so user data gets sent to reducers to create new state
             dispatch(addedStudent(response.data));
             // enrol student in the class - can only do that once student is added to database and id is assigned to him/her
-
             axios.put('/api/enrol', { "students": response.data._id, "classes": studentInfo.classId, "teacher": studentInfo.userId })
               .then(function(response){
                 console.log("THIS IS THE RESPONSE", response)

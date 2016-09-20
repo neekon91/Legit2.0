@@ -33,32 +33,61 @@ app.post('/signup', Auth.signup);
 app.get('/api/report/users/:id', Controller.mainDashboard); //WORKS
 app.get('/api/report/classes/:id', Controller.classDashboard); //WORKS
 app.get('/api/report/students/:id', Controller.studentDashboard); //Works
-app.get('/api/report/assignments/:id', Controller.assignmentDashboard);
+
 app.get('/api/outcome/:StudentId/:SectionId', Controller.outcomeInfo); //Need to work on this
 
 //Get Messages for Students and Teachers
 
-app.get('/api/messages/teacher/:UserId/', Controller.getMessages) //Need to work on this
-app.get('/api/messages/student/:StudentId/', Controller.getMessages) //Need to work on this
 
+app.get('/api/messages/:id', Controller.getMessages) //Work me
 
 //ADD CONTENT TO DATABASE
 
 app.post('/api/add/classes', Controller.addClass); //Works
 
+
 app.post('/api/add/assignments', Controller.addAssignment); //Works
 
 app.post('/api/add/students', Controller.addStudent); //Works
 
-app.post('/api/add/message/', Controller.addMessage); //Should work??
+app.post('/api/add/message', Controller.addMessage); //Should work??
 
 app.put('/api/enrol', Controller.enrollStudent); //Works
 
 
 
+// ========
+// image upload
 
+// const multiparty = require('multiparty');
+// const fs = require('fs');
 
+// function saveImage(req, res) {
+//   const form = new multiparty.Form();
 
+//   form.parse(req, (err, fields, files) => {
+
+//     // var {path: tempPath, originalFilename} = files.imageFile[0];
+//     var copyToPath = "./images/" + files.imageFile[0];
+
+//     fs.readFile(files.imageFile[0], (err, data) => {
+//       // make copy of image to new location
+//       fs.writeFile(newPath, data, (err) => {
+//         // delete temp image
+//         fs.unlink(tmpPath, () => {
+//           res.send("File uploaded to: " + newPath);
+//         });
+//       });
+//     });
+//   })
+// }
+
+// app.post('/upload', saveImage);
+
+// app.use('/images',express.static(__dirname + '/images'));
+
+//  upload end
+// ========
 
 app.all('/*', function(req, res) {
   res.sendFile('index.html', {
@@ -71,25 +100,3 @@ console.log("Server is doing big things on port 1337");
 
 
 module.exports = app;
-
-
-
-// var express = require('express');
-// var db = require('./database/database_config.js');
-//
-// var app = express();
-//
-// require('./config/middleware.js')(app, express);
-// require('./config/routes.js')(app, express);
-//
-// app.set('port', (process.env.PORT || 1337));
-//
-// db.sync().then(function () {
-//   app.listen(app.get('port'), function() {
-//     console.log('listening on port ', app.get('port'));
-//   });
-// }).catch(function (err) {
-//   console.log(err);
-// });
-//
-// module.exports = app;
